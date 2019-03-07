@@ -3,14 +3,15 @@
 This repository contains proof-of-concept (PoC) codes for adopting Zero-Knowledge Proofs to Airbloc Protocol.
 
 ## Benchmark
-Benchmark ran on to `InsuranceTest` with witness `minimumIncome: 500, income: 600`.
+Benchmark ran on to `InsuranceTest` with witness minimumIncome: 500, income: 600.
 
  * Compiler version: `0.4.25+commit.59dbf8f1.Emscripten.clang`
- * Optimizations: `200`
+ * Optimizations: 200
 
+#### Results
 
 | Backend                                     | Verify Cost |
-|=============================================|=============|
+|---------------------------------------------|-------------|
 | [PGHR13](https://eprint.iacr.org/2013/279)  | 1656161     |
 | [Groth17](https://eprint.iacr.org/2017/540) | 883718      |
 
