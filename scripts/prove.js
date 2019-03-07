@@ -13,7 +13,8 @@ function toPascalCase(name) {
 }
 
 function populateCommand(projectName) {
-    const proof = JSON.parse(fs.readFileSync(`build/${projectName}/proof.json`).toString());
+    // to read malformed JSON (trailing comma!!) produced from GM17 backend :(
+    const proof = new Function('return ' + fs.readFileSync(`build/${projectName}/proof.json`).toString())();
     
     const params = [...Object.values(proof.proof), proof.input];
     return `(await ${toPascalCase(projectName)}.deployed()).verifyTx.call(${params.map(JSON.stringify).join(',')})`;
@@ -27,7 +28,7 @@ function main(name, witnesses) {
         + ` -a ${witnesses.join(' ')}`
     );
 
-    exec('docker exec zokrates /home/zokrates/zokrates generate-proof'
+    exec('docker exec zokrates /home/zokrates/zokrates generate-proof --backend gm17'
         + ` -w ${workDir}/witness`
         + ` -i ${workDir}/variables.inf`
         + ` -j ${workDir}/proof.json`

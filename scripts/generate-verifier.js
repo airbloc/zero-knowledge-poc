@@ -4,14 +4,20 @@ const childProcess = require('child_process');
 const header = `
 pragma solidity >=0.4.21 <0.6.0;
 import "contracts/Pairing.sol";
-`.trim();
+`.trimLeft();
 
 const migrationTemplate = `
 const ContractName = artifacts.require("ContractName");
+const Pairing = artifacts.require("Pairing");
+const BN256G2 = artifacts.require("BN256G2");
 module.exports = function(deployer) {
-    deployer.deploy(ContractName);
+    deployer.then(async () => {
+        await deployer.link(Pairing, ContractName);
+        await deployer.link(BN256G2, ContractName);
+        await deployer.deploy(ContractName);
+    });
 };
-`.trim();
+`.trimLeft();
 
 function exec(cmd) {
     return childProcess.execSync(cmd, {stdio: 'inherit'});
