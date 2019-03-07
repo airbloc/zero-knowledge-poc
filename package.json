@@ -5,6 +5,8 @@
   "main": "truffle-config.js",
   "scripts": {
     "build": "truffle compile",
+    "generate-verifier": "node scripts/generate-verifier.js",
+    "prove": "node scripts/prove.js",
     "migrate": "truffle migrate --reset",
     "console": "truffle console",
     "test": "echo \"Error: no test specified\" && exit 1"
