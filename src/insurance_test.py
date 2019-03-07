@@ -1,6 +1,5 @@
 
-def main(field minimum_income, private field income):
-    insurance_appliable = if income >= minimum_income then 1 else 0 fi
-    insurance_appliable == 1
-    return
-
+def main(field minimumIncome, private field income) -> (field):
+    field isGreaterThan = if income >= minimumIncome then 1 else 0 fi
+    isGreaterThan == 1
+    return isGreaterThan
