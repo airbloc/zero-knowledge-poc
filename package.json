@@ -1,0 +1,17 @@
+{
+  "name": "zk-identity-poc",
+  "version": "1.0.0",
+  "description": "Zero Knowledge DID Proof-of-Concept for Airbloc",
+  "main": "truffle-config.js",
+  "scripts": {
+    "build": "truffle compile",
+    "migrate": "truffle migrate --reset",
+    "console": "truffle console",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "truffle": "^5.0.7"
+  }
+}
